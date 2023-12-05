@@ -73,10 +73,10 @@ const LoginPage = () => {
           disabled={isLoading}
           control={form.control}
           name='email'
-          render={(field) => (
+          render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type='email' placeholder='Email' {...field}></Input>
+                <Input type='email' placeholder='Email' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -86,14 +86,10 @@ const LoginPage = () => {
           disabled={isLoading}
           control={form.control}
           name='password'
-          render={(field) => (
+          render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type='password'
-                  placeholder='Password'
-                  {...field}
-                ></Input>
+                <Input type='password' placeholder='Password' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
