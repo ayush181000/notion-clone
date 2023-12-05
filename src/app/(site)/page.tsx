@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <>
       <section
-        id='introduction'
+        id='resources'
         className=' overflow-hidden
       px-4
       sm:px-6
@@ -53,7 +53,7 @@ const HomePage = () => {
             bg-background
           '
           >
-            Get Cypress Free
+            Get Upbase Free
           </Button>
         </div>
         <div
@@ -187,7 +187,7 @@ const HomePage = () => {
           <Image src={Cal} alt='Banner' className='rounded-2xl' />
         </div>
       </section>
-      <section id='testimonials' className='relative'>
+      <section id='testimonial' className='relative'>
         <div
           className='w-full
           blur-[120px]
