@@ -5,7 +5,6 @@ import db from './db';
 import { File, Folder, Subscription, User, workspace } from './supabase.types';
 import { and, eq, ilike, notExists } from 'drizzle-orm';
 import { collaborators } from './schema';
-import { revalidatePath } from 'next/cache';
 
 export const createWorkspace = async (workspace: workspace) => {
   try {
@@ -24,7 +23,6 @@ export const deleteWorkspace = async (workspaceId: string) => {
 
 export const getUserSubscriptionStatus = async (userId: string) => {
   try {
-    console.log(db.query);
     const data = await db.query.subscriptions.findFirst({
       where: (s, { eq }) => eq(s.userId, userId),
     });
@@ -52,6 +50,7 @@ export const getFolders = async (workspaceId: string) => {
       .where(eq(folders.workspaceId, workspaceId));
     return { data: results, error: null };
   } catch (error) {
+    console.log(error);
     return { data: null, error: 'Error' };
   }
 };

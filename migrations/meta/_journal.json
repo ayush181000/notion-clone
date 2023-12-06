@@ -15,6 +15,27 @@
       "when": 1701903126555,
       "tag": "0001_naive_deathbird",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1701904607802,
+      "tag": "0002_stormy_mac_gargan",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1701904824449,
+      "tag": "0003_fat_vance_astro",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1701904991202,
+      "tag": "0004_lyrical_thunderbird",
+      "breakpoints": true
     }
   ]
 }

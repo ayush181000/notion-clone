@@ -24,7 +24,7 @@ export async function actionSignUpUser({
     .select('*')
     .eq('email', email);
 
-  if (data?.length) return { error: { message: 'User already exists', data } };
+  if (data?.length) return { error: { message: 'User already exists' } };
 
   const response = await supabase.auth.signUp({
     email,
