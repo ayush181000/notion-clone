@@ -8,7 +8,7 @@ import {
   integer,
   jsonb,
 } from 'drizzle-orm/pg-core';
-import { prices, subscriptionStatus } from '../../../migrations/schema';
+import { prices, subscriptionStatus, users } from '../../../migrations/schema';
 
 export const workspaces = pgTable('workspaces', {
   id: uuid('id').defaultRandom().primaryKey().notNull(),
@@ -19,6 +19,7 @@ export const workspaces = pgTable('workspaces', {
   workspaceOwner: uuid('workspace_owner').notNull(),
   title: text('title').notNull(),
   iconId: text('icon_id').notNull(),
+  data: text('data'),
   inTrash: text('in_trash'),
   logo: text('logo'),
   bannerUrl: text('banner_url'),
@@ -100,4 +101,20 @@ export const subscriptions = pgTable('subscriptions', {
     withTimezone: true,
     mode: 'string',
   }).default(sql`now()`),
+});
+
+export const collaborators = pgTable('collaborators', {
+  workspaceId: uuid('workspace_id')
+    .notNull()
+    .references(() => workspaces.id, { onDelete: 'cascade' }),
+  createdAt: timestamp('created_at', {
+    withTimezone: true,
+    mode: 'string',
+  })
+    .defaultNow()
+    .notNull(),
+
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
 });
