@@ -8,12 +8,10 @@ import { getUserSubscriptionStatus } from '@/lib/supabase/queries';
 
 const Dashboard = async () => {
   const supabase = createServerComponentClient({ cookies });
-  console.log(supabase);
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log(user);
 
   if (!user) return;
 

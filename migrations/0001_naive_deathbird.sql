@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS "subscriptions" (
 	"trial_end" timestamp with time zone DEFAULT now()
 );
 --> statement-breakpoint
-ALTER TABLE "workspaces" ADD COLUMN "data" text;--> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "collaborators" ADD CONSTRAINT "collaborators_workspace_id_workspaces_id_fk" FOREIGN KEY ("workspace_id") REFERENCES "workspaces"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION

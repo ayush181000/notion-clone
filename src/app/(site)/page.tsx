@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import CustomCard from '@/components/landing-page/custom-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CardContent, CardDescription, CardTitle } from '@/components/ui/card';
+import db from '@/lib/supabase/db';
 
 const HomePage = () => {
   return (

@@ -114,7 +114,6 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({
           </div>
         </form>
       </CardContent>
-      DashboardSetup
     </Card>
   );
 };
