@@ -9,7 +9,7 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSchema } from '@/lib/types';
 
-import Logo from '../../../../public/cypresslogo.svg';
+import Logo from '../../../../public/upbaseLogo.svg';
 import Loader from '@/components/gloabal/Loader';
 import {
   Form,

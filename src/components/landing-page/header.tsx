@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Logo from '../../../public/cypresslogo.svg';
+import Logo from '../../../public/upbaseLogo.svg';
 
 import {
   NavigationMenu,
@@ -78,13 +78,13 @@ const Header = () => {
         className='w-full flex gap-2
         justify-left items-center'
       >
-        <Image src={Logo} alt='Cypress Logo' width={25} height={25} />
+        <Image src={Logo} alt='Upbase Logo' width={25} height={25} />
         <span
           className='font-semibold
           dark:text-white
         '
         >
-          cypress.
+          upbase.
         </span>
       </Link>
       <NavigationMenu className='hidden md:block'>
