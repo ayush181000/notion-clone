@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSchema } from '@/lib/types';
 
 import Logo from '../../../../public/upbaseLogo.svg';
-import Loader from '@/components/gloabal/Loader';
+import Loader from '@/components/global/Loader';
 import {
   Form,
   FormControl,
@@ -42,6 +42,7 @@ const LoginPage = () => {
     if (error) {
       form.reset();
       setSubmitError(error.message);
+      return;
     }
 
     router.replace('/dashboard');

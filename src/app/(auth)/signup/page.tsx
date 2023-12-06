@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-import Loader from '@/components/gloabal/Loader';
+import Loader from '@/components/global/Loader';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
