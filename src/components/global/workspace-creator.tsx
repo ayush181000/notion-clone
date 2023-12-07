@@ -167,23 +167,23 @@ const WorkspaceCreator = () => {
             <ScrollArea
               className='
             h-[120px]
-            overflow-y-scroll
+            overflow-hidden
             w-full
             rounded-md
             border
-            border-muted-foreground/20'
+            border-muted-foreground/20
+            '
             >
               {collaborators.length ? (
                 collaborators.map((c) => (
                   <div
-                    className='p-4 flex
+                    className='py-4 flex
                       justify-between
-                      items-center
-                '
+                      items-center mx-2'
                     key={c.id}
                   >
-                    <div className='flex gap-4 items-center'>
-                      <Avatar>
+                    <div className='flex gap-4 items-center '>
+                      <Avatar className='ml-2'>
                         <AvatarImage src='/avatars/7.png' />
                         <AvatarFallback>PJ</AvatarFallback>
                       </Avatar>
@@ -193,7 +193,6 @@ const WorkspaceCreator = () => {
                           text-muted-foreground
                           overflow-hidden
                           overflow-ellipsis
-                          sm:w-[300px]
                           w-[140px]
                         '
                       >
@@ -203,6 +202,7 @@ const WorkspaceCreator = () => {
                     <Button
                       variant='secondary'
                       onClick={() => removeCollaborator(c)}
+                      className=''
                     >
                       Remove
                     </Button>
