@@ -43,6 +43,7 @@ const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({
     if (timeRef.current) clearTimeout(timeRef.current);
     timeRef.current = setTimeout(async () => {
       const res = await getUsersFromSearch(e.target.value);
+      console.log(res);
       setSearchResults(res);
     }, 450);
   };
