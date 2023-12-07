@@ -58,11 +58,9 @@ const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({
       <SheetContent className='w-[400px] sm:w-[540px]'>
         <SheetHeader>
           <SheetTitle>Search Collaborator</SheetTitle>
-          <SheetDescription>
-            <p className='text-sm text-muted-foreground'>
-              You can also remove collaborators after adding them from settings
-              tab.
-            </p>
+          <SheetDescription className='text-sm text-muted-foreground'>
+            You can also remove collaborators after adding them from settings
+            tab.
           </SheetDescription>
         </SheetHeader>
         <div className='flex justify-center items-center gap-2 mt-2'>
