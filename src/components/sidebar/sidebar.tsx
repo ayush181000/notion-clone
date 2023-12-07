@@ -11,6 +11,7 @@ import {
 } from '@/lib/supabase/queries';
 import { redirect } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import WorkspaceDropdown from './workspace-dropdown';
 
 interface SidebarProps {
   params: { workspaceId: string };
@@ -55,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
         className
       )}
     >
-      {/* <div>
+      <div>
         <WorkspaceDropdown
           privateWorkspaces={privateWorkspaces}
           sharedWorkspaces={sharedWorkspaces}
@@ -66,17 +67,17 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
             ...sharedWorkspaces,
           ].find((workspace) => workspace.id === params.workspaceId)}
         />
-        <PlanUsage
+        {/* <PlanUsage
           foldersLength={workspaceFolderData?.length || 0}
           subscription={subscriptionData}
-        />
-        <NativeNavigation myWorkspaceId={params.workspaceId} />
-        <ScrollArea
+        /> */}
+        {/* <NativeNavigation myWorkspaceId={params.workspaceId} /> */}
+        {/* <ScrollArea
           className='overflow-scroll relative
           h-[450px]
         '
-        >
-          <div
+        > */}
+        {/* <div
             className='pointer-events-none 
           w-full 
           absolute 
@@ -91,9 +92,9 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
             workspaceFolders={workspaceFolderData || []}
             workspaceId={params.workspaceId}
           />
-        </ScrollArea>
+        </ScrollArea> */}
       </div>
-      <UserCard subscription={subscriptionData} /> */}
+      {/* <UserCard subscription={subscriptionData} /> */}
     </aside>
   );
 };
