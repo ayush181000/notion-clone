@@ -59,14 +59,14 @@ const WorkspaceCreator = () => {
         bannerUrl: '',
       };
       if (permissions === 'private') {
-        toast({ title: 'Success', description: 'Created the workspace' });
         await createWorkspace(newWorkspace);
+        toast({ title: 'Success', description: 'Created the workspace' });
         router.refresh();
       }
       if (permissions === 'shared') {
-        toast({ title: 'Success', description: 'Created the workspace' });
         await createWorkspace(newWorkspace);
         await addCollaborators(collaborators, uuid);
+        toast({ title: 'Success', description: 'Created the workspace' });
         router.refresh();
       }
     }
@@ -167,7 +167,7 @@ const WorkspaceCreator = () => {
             <ScrollArea
               className='
             h-[120px]
-            overflow-hidden
+            overflow-y-scroll
             w-full
             rounded-md
             border
@@ -177,9 +177,10 @@ const WorkspaceCreator = () => {
               {collaborators.length ? (
                 collaborators.map((c) => (
                   <div
-                    className='py-4 flex
+                    className='py-4 pr-2 flex
                       justify-between
-                      items-center mx-2'
+                      items-center
+                '
                     key={c.id}
                   >
                     <div className='flex gap-4 items-center '>
@@ -202,7 +203,6 @@ const WorkspaceCreator = () => {
                     <Button
                       variant='secondary'
                       onClick={() => removeCollaborator(c)}
-                      className=''
                     >
                       Remove
                     </Button>

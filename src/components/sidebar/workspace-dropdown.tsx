@@ -2,24 +2,24 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
 import { workspace } from '@/lib/supabase/supabase.types';
 import { useAppState } from '@/lib/providers/state-provider';
+
 import SelectedWorkspace from './selected-workspace';
 import CustomDialogTrigger from '../global/custom-dialog-trigger';
 import WorkspaceCreator from '../global/workspace-creator';
 
 interface WorkspaceDropdownProps {
-  privateWorkspaces: workspace[];
-  sharedWorkspaces: workspace[];
-  collaboratingWorkspaces: workspace[];
+  privateWorkspaces: workspace[] | [];
+  sharedWorkspaces: workspace[] | [];
+  collaboratingWorkspaces: workspace[] | [];
   defaultValue: workspace | undefined;
 }
 
 const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
   privateWorkspaces,
-  sharedWorkspaces,
   collaboratingWorkspaces,
+  sharedWorkspaces,
   defaultValue,
 }) => {
   const { dispatch, state } = useAppState();
@@ -33,21 +33,32 @@ const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
         payload: {
           workspaces: [
             ...privateWorkspaces,
-            ...collaboratingWorkspaces,
             ...sharedWorkspaces,
+            ...collaboratingWorkspaces,
           ].map((workspace) => ({ ...workspace, folders: [] })),
         },
       });
     }
-  }, [privateWorkspaces, sharedWorkspaces, collaboratingWorkspaces]);
+  }, [privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces]);
 
   const handleSelect = (option: workspace) => {
     setSelectedOption(option);
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const findSelectedWorkspace = state.workspaces.find(
+      (workspace) => workspace.id === defaultValue?.id
+    );
+    if (findSelectedWorkspace) setSelectedOption(findSelectedWorkspace);
+  }, [state, defaultValue]);
+
   return (
-    <div className='relative inline-block text-left'>
+    <div
+      className=' relative inline-block
+      text-left
+  '
+    >
       <div>
         <span onClick={() => setIsOpen(!isOpen)}>
           {selectedOption ? (

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { workspace } from '@/lib/supabase/supabase.types';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { workspace } from '@/lib/supabase/supabase.types';
 
 interface SelectedWorkspaceProps {
   workspace: workspace;
@@ -17,25 +17,33 @@ const SelectedWorkspace: React.FC<SelectedWorkspaceProps> = ({
 }) => {
   const supabase = createClientComponentClient();
   const [workspaceLogo, setWorkspaceLogo] = useState('/upbaseLogo.svg');
-
   useEffect(() => {
-    if (workspace?.logo) {
+    if (workspace.logo) {
       const path = supabase.storage
         .from('workspace-logos')
-        .getPublicUrl(workspace.logo);
+        .getPublicUrl(workspace.logo)?.data.publicUrl;
+      setWorkspaceLogo(path);
     }
-  }, [workspace, supabase.storage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [workspace]);
 
   return (
     <Link
-      href={`/dashboard/${workspace?.id}`}
+      href={`/dashboard/${workspace.id}`}
       onClick={() => {
         if (onClick) onClick(workspace);
       }}
-      className='flex
-          rounded-md
-          hover:bg-muted transition-all flex-row p-2 gap-4
-          justify-center cursor-pointer items-center my-2'
+      className='flex 
+      rounded-md 
+      hover:bg-muted 
+      transition-all 
+      flex-row 
+      p-2 
+      gap-4 
+      justify-center 
+      cursor-pointer 
+      items-center 
+      my-2'
     >
       <Image
         src={workspaceLogo}
@@ -45,8 +53,14 @@ const SelectedWorkspace: React.FC<SelectedWorkspaceProps> = ({
         objectFit='cover'
       />
       <div className='flex flex-col'>
-        <p className='text-lg w-[170px] overlow-hidden overflow-ellipsis whitespace-nowrap'>
-          {workspace?.title}
+        <p
+          className='text-lg 
+        w-[170px] 
+        overflow-hidden 
+        overflow-ellipsis 
+        whitespace-nowrap'
+        >
+          {workspace.title}
         </p>
       </div>
     </Link>
